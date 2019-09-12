@@ -1,0 +1,32 @@
+12Sep2019: 
+
+A] IMPORTANT NOTE: 
+
+	a)The python code needs to be modified for the actual COM port where the arduino is connected, else the code returns an error.
+
+	b)These codes are written for study purpose only to understand basic communication between an arduino and python code.
+
+	c)No realtime interrupt based or threading or listeners are used as the code is just basic level interfacing which was written only to test out the communication but can be used for very simply projects.
+
+B] FILE INFORMATION:
+
+	The `PythArdu-DataStringFilterTrial.rar` contains three files. 
+A .ui made in QT, the converted .py file and an arduino code. 
+
+	The arduino code was tested on a arduino nano. One would need to modify the `COM8` in the python code with the one where the users arduino is connected.
+
+	This is a simple project intended for beginners to try out interfacing the arduino to a python code.
+
+	The basic ui was made in PyQT. The .ui is then converted to a .py code using the pyuic command line.
+
+	Brief description of the Python code:
+
+	When the python code is run, The GUI opens. Nothing happens immediately.
+When the user presses the `Receive Data` button, the python code starts accepting the data from the arduino via RS232 interface. The data is displayed simultaneously in the python shell as well as the ui. The dial rotates when the `Engine Speed` data is received and the slider moves when `Oil Temperature` data is received. 
+The python code has the filtering to sort out data between `Engine Speed` and `Oil Temperature`. The arduino encodes the data line in a format that the python code is programmed to sort out. Any invalid data line sent by the arduino will be filtered as `Invalid Data`.
+
+	The arduino has two loops for sending data, first sends an increasing value of `Engine Speed` encoded as `DaXXXX`; and the second a decreasing value of `Oil Temperature` encoded as `DbXXXX`.
+
+	The python code reads the first two characters of the data received to decode the data type. Based on the data type, the remaining data string is filtered / assigned to the respective variable for displaying in the shell and GUI.
+
+	Please go through the ui file in QT to understand the object referencing so that the code can be easily read.
